@@ -30,18 +30,18 @@ By default, the load balancer is configured to use two backend servers running o
 
 #!/bin/bash
 
-# Clone the repository
+## Clone the repository
 git clone <repository-url>
 
-# Navigate to the project directory
+## Navigate to the project directory
 cd Load-Balencer
 
-# Build the project
+## Build the project
 mvn clean install
 
-# Run the application 
+Run the application 
 
-# Send requests to the load balancer:
+## Send requests to the load balancer:
 
 curl http://localhost:8080/
 
