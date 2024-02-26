@@ -1,6 +1,7 @@
 package com.example.loadbalencer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +18,10 @@ public class LoadBalancerController {
     private int currentIndex;
 
     @Autowired
-    public LoadBalancerController(RestTemplate restTemplate) {
+    public LoadBalancerController(RestTemplate restTemplate,
+                                  @Value("${backend.urls}") List<String> backendUrls) {
         this.restTemplate = restTemplate;
-        this.backendUrls = new ArrayList<>();
-        // Hardcoded backend server URLs for demonstration
-        backendUrls.add("http://localhost:8081");
-        backendUrls.add("http://localhost:8082");
+        this.backendUrls = backendUrls;
         this.currentIndex = 0;
         System.out.println(backendUrls);
     }
